@@ -12,9 +12,7 @@ env:
 
 services:
     - mongodb
-    - redis
     - rabbitmq
-    - neo4j
 
 after_success:
   - mvn deploy
