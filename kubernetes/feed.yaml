@@ -1,0 +1,25 @@
+kind: ReplicationController
+id: feed-controller
+apiVersion: v1beta1
+desiredState:
+  replicas: 1
+  replicaSelector: 
+    name: feed
+    version: v1
+  podTemplate:
+    labels:
+      name : feed
+      version: v1
+    desiredState:
+      manifest:
+        containers:
+          - name: feed
+            image: clemble/feed:latest
+            imagePullPolicy : PullAlways
+            ports:
+              - containerPort: 10011
+                hostPort: 10011
+                protocol: TCP
+            labels:
+              name : feed
+              version: v1
