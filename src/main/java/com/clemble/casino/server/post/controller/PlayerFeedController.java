@@ -20,16 +20,16 @@ import java.util.Collection;
  * Created by mavarazy on 11/30/14.
  */
 @RestController
-public class PlayerFeedServiceController implements PlayerFeedService {
+public class PlayerFeedController implements PlayerFeedService {
 
     final private PlayerPostRepository postRepository;
     final private PlayerConnectionService connectionService;
     final private SystemNotificationService notificationService;
 
-    public PlayerFeedServiceController(
-        PlayerConnectionService connectionService,
-        PlayerPostRepository postRepository,
-        SystemNotificationService notificationService) {
+    public PlayerFeedController(
+            PlayerConnectionService connectionService,
+            PlayerPostRepository postRepository,
+            SystemNotificationService notificationService) {
         this.postRepository = postRepository;
         this.connectionService = connectionService;
         this.notificationService = notificationService;
