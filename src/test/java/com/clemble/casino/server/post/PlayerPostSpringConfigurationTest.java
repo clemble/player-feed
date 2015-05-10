@@ -1,6 +1,5 @@
 package com.clemble.casino.server.post;
 
-import com.clemble.casino.bet.Bet;
 import com.clemble.casino.goal.lifecycle.configuration.GoalConfiguration;
 import com.clemble.casino.goal.lifecycle.management.GoalContext;
 import com.clemble.casino.goal.lifecycle.management.GoalPhase;
@@ -9,9 +8,6 @@ import com.clemble.casino.goal.post.GoalStartedPost;
 import com.clemble.casino.lifecycle.management.event.action.Action;
 import com.clemble.casino.lifecycle.management.outcome.Outcome;
 import com.clemble.casino.lifecycle.record.EventRecord;
-import com.clemble.casino.lifecycle.record.RecordState;
-import com.clemble.casino.money.Currency;
-import com.clemble.casino.money.Money;
 import com.clemble.casino.payment.Bank;
 import com.clemble.casino.post.PlayerPost;
 import com.clemble.casino.server.post.repository.PlayerPostRepository;
@@ -62,7 +58,6 @@ public class PlayerPostSpringConfigurationTest {
             ObjectGenerator.generate(GoalPhase.class),
             ObjectGenerator.generate(Action.class),
             new TreeSet<>(ObjectGenerator.generateList(EventRecord.class)),
-            ObjectGenerator.generate(RecordState.class),
             ObjectGenerator.generate(Outcome.class)
         );
         // Step 1. Creating post
