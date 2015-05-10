@@ -6,7 +6,7 @@ import com.clemble.casino.player.PlayerPostWebMapping;
 import com.clemble.casino.player.service.PlayerConnectionService;
 import com.clemble.casino.player.service.PlayerFeedService;
 import com.clemble.casino.post.PlayerPost;
-import com.clemble.casino.server.ExternalController;
+import com.clemble.casino.server.ServerController;
 import com.clemble.casino.server.event.share.SystemSharePostEvent;
 import com.clemble.casino.server.player.notification.SystemNotificationService;
 import com.clemble.casino.server.post.repository.PlayerPostRepository;
@@ -21,7 +21,7 @@ import java.util.Collection;
  * Created by mavarazy on 11/30/14.
  */
 @RestController
-public class PlayerFeedController implements PlayerFeedService, ExternalController {
+public class PlayerFeedController implements PlayerFeedService, ServerController {
 
     final private PlayerPostRepository postRepository;
     final private PlayerConnectionService connectionService;

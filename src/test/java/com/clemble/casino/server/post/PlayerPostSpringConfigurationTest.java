@@ -2,6 +2,7 @@ package com.clemble.casino.server.post;
 
 import com.clemble.casino.goal.lifecycle.configuration.GoalConfiguration;
 import com.clemble.casino.goal.lifecycle.management.GoalContext;
+import com.clemble.casino.goal.lifecycle.management.GoalInspiration;
 import com.clemble.casino.goal.lifecycle.management.GoalPhase;
 import com.clemble.casino.goal.lifecycle.management.GoalState;
 import com.clemble.casino.goal.post.GoalStartedPost;
@@ -58,7 +59,8 @@ public class PlayerPostSpringConfigurationTest {
             ObjectGenerator.generate(GoalPhase.class),
             ObjectGenerator.generate(Action.class),
             new TreeSet<>(ObjectGenerator.generateList(EventRecord.class)),
-            ObjectGenerator.generate(Outcome.class)
+            ObjectGenerator.generate(Outcome.class),
+            new TreeSet<>(ObjectGenerator.generateList(GoalInspiration.class))
         );
         // Step 1. Creating post
         GoalStartedPost post = new GoalStartedPost(
