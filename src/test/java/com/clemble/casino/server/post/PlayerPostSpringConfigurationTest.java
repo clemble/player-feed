@@ -7,6 +7,9 @@ import com.clemble.casino.goal.lifecycle.management.GoalPhase;
 import com.clemble.casino.goal.lifecycle.management.GoalState;
 import com.clemble.casino.goal.post.GoalStartedPost;
 import com.clemble.casino.lifecycle.management.event.action.Action;
+import com.clemble.casino.lifecycle.management.outcome.Outcome;
+import com.clemble.casino.lifecycle.record.EventRecord;
+import com.clemble.casino.lifecycle.record.RecordState;
 import com.clemble.casino.money.Currency;
 import com.clemble.casino.money.Money;
 import com.clemble.casino.payment.Bank;
@@ -25,6 +28,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Created by mavarazy on 11/30/14.
@@ -56,7 +60,10 @@ public class PlayerPostSpringConfigurationTest {
             Collections.<String>singleton(ObjectGenerator.generate(String.class)),
             ObjectGenerator.generate(String.class),
             ObjectGenerator.generate(GoalPhase.class),
-            ObjectGenerator.generate(Action.class)
+            ObjectGenerator.generate(Action.class),
+            new TreeSet<>(ObjectGenerator.generateList(EventRecord.class)),
+            ObjectGenerator.generate(RecordState.class),
+            ObjectGenerator.generate(Outcome.class)
         );
         // Step 1. Creating post
         GoalStartedPost post = new GoalStartedPost(
