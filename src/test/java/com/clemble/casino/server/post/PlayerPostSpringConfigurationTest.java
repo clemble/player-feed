@@ -59,7 +59,8 @@ public class PlayerPostSpringConfigurationTest {
             ObjectGenerator.generate(GoalPhase.class),
             new TreeSet<>(ObjectGenerator.generateList(EventRecord.class)),
             ObjectGenerator.generate(Outcome.class),
-            new TreeSet<>(ObjectGenerator.generateList(GoalInspiration.class))
+            new TreeSet<>(ObjectGenerator.generateList(GoalInspiration.class)),
+            ObjectGenerator.generate(DateTime.class)
         );
         // Step 1. Creating post
         GoalStartedPost post = new GoalStartedPost(
