@@ -57,7 +57,6 @@ public class PlayerPostSpringConfigurationTest {
             Collections.<String>singleton(ObjectGenerator.generate(String.class)),
             ObjectGenerator.generate(String.class),
             ObjectGenerator.generate(GoalPhase.class),
-            ObjectGenerator.generate(Action.class),
             new TreeSet<>(ObjectGenerator.generateList(EventRecord.class)),
             ObjectGenerator.generate(Outcome.class),
             new TreeSet<>(ObjectGenerator.generateList(GoalInspiration.class))
