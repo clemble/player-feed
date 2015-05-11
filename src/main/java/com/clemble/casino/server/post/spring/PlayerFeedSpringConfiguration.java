@@ -3,7 +3,6 @@ package com.clemble.casino.server.post.spring;
 import com.clemble.casino.player.service.PlayerConnectionService;
 import com.clemble.casino.server.player.notification.ServerNotificationService;
 import com.clemble.casino.server.player.notification.SystemNotificationService;
-import com.clemble.casino.server.player.notification.SystemNotificationServiceListener;
 import com.clemble.casino.server.post.controller.PlayerFeedController;
 import com.clemble.casino.server.post.listener.SystemPostAddEventListener;
 import com.clemble.casino.server.post.repository.PlayerPostRepository;
@@ -41,10 +40,9 @@ public class PlayerFeedSpringConfiguration implements SpringConfiguration {
     public SystemPostAddEventListener systemPostAddEventListener(
         @Qualifier("playerNotificationService") ServerNotificationService notificationService,
         PlayerPostRepository postRepository,
-        @Qualifier("playerConnectionClient") PlayerConnectionService connectionService,
-        SystemNotificationServiceListener notificationServiceListener) {
+        @Qualifier("playerConnectionClient") PlayerConnectionService connectionService
+    ) {
         SystemPostAddEventListener notificationAddEventListener = new SystemPostAddEventListener(postRepository, connectionService, notificationService);
-        notificationServiceListener.subscribe(notificationAddEventListener);
         return notificationAddEventListener;
     }
 
