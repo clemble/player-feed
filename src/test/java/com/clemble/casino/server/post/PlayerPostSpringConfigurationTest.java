@@ -48,7 +48,7 @@ public class PlayerPostSpringConfigurationTest {
             ObjectGenerator.generate(String.class),
             ObjectGenerator.generate(Bank.class),
             ObjectGenerator.generate(String.class),
-            "UTC",
+            DateTimeZone.UTC,
             ObjectGenerator.generate(String.class),
             ObjectGenerator.generate(GoalConfiguration.class),
             Collections.<String>singleton(ObjectGenerator.generate(String.class)),
