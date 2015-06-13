@@ -2,6 +2,7 @@ package com.clemble.casino.server.post.controller;
 
 import com.clemble.casino.WebMapping;
 import com.clemble.casino.goal.post.GoalPost;
+import com.clemble.casino.player.PlayerConnection;
 import com.clemble.casino.player.PlayerPostWebMapping;
 import com.clemble.casino.player.service.PlayerConnectionService;
 import com.clemble.casino.player.service.PlayerFeedService;
@@ -11,11 +12,13 @@ import com.clemble.casino.server.event.share.SystemSharePostEvent;
 import com.clemble.casino.server.player.notification.SystemNotificationService;
 import com.clemble.casino.server.post.repository.PlayerPostRepository;
 import com.clemble.casino.social.SocialProvider;
+import com.google.common.collect.ImmutableCollection;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * Created by mavarazy on 11/30/14.
@@ -45,10 +48,10 @@ public class PlayerFeedController implements PlayerFeedService, ServerController
     @ResponseStatus(value = HttpStatus.OK)
     public PlayerPost[] myFeed(@CookieValue("player") String player) {
         // Step 1. Searching for connections
-        Collection<String> connections = new ArrayList<String>(connectionService.getConnections(player));
-        connections.add(player);
+        Collection<PlayerConnection> connections = new ArrayList<PlayerConnection>(connectionService.getConnections(player));
+        Collection<String> connectionIds = connections.stream().map((connection) -> connection.getPlayer()).collect(Collectors.toList());
         // Step 2. Fetching player connections
-        return postRepository.findByPlayerInOrderByCreatedDesc(connections).toArray(new PlayerPost[0]);
+        return postRepository.findByPlayerInOrderByCreatedDesc(connectionIds).toArray(new PlayerPost[0]);
     }
 
     @Override

@@ -51,7 +51,7 @@ public class PlayerPostSpringConfigurationTest {
             DateTimeZone.UTC,
             ObjectGenerator.generate(String.class),
             ObjectGenerator.generate(GoalConfiguration.class),
-            Collections.<String>singleton(ObjectGenerator.generate(String.class)),
+            Collections.singleton(ObjectGenerator.generate(String.class)),
             ObjectGenerator.generate(String.class),
             ObjectGenerator.generate(GoalPhase.class),
             new TreeSet<>(ObjectGenerator.generateList(EventRecord.class)),

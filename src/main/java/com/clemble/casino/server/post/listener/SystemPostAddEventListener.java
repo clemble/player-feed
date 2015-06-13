@@ -1,6 +1,7 @@
 package com.clemble.casino.server.post.listener;
 
 import com.clemble.casino.player.PlayerAware;
+import com.clemble.casino.player.PlayerConnection;
 import com.clemble.casino.player.service.PlayerConnectionService;
 import com.clemble.casino.post.PlayerPost;
 import com.clemble.casino.server.event.post.SystemPostAddEvent;
@@ -10,6 +11,7 @@ import com.clemble.casino.server.post.repository.PlayerPostRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * Created by mavarazy on 11/30/14.
@@ -39,7 +41,8 @@ public class SystemPostAddEventListener implements SystemEventListener<SystemPos
         // Step 1. Saving post
         postRepository.save(post);
         // Step 2. Collecting interested parties
-        Collection<String> players = new ArrayList<String>(connectionService.getConnections(post.getPlayer()));
+        Collection<PlayerConnection> connections = connectionService.getConnections(post.getPlayer());
+        Collection<String> players = connections.stream().map((connection) -> connection.getPlayer()).collect(Collectors.toList());
         players.add(post.getPlayer());
         // Step 3. Sending notifications to all
         notificationService.send(players, post);
